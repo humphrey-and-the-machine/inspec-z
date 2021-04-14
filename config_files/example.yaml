@@ -1,0 +1,173 @@
+# Specz caltaog
+# astropy.Table formats: https://docs.astropy.org/en/stable/io/unified.html#built-in-readers-writers
+survey: SDSS DR16
+filename_path: /path/to/inspec-z/data
+filename: specObj-dr16_example.fits
+fileformat: fits
+provenance: https://data.sdss.org/sas/dr16/sdss/spectro/redux/specObj-dr16.fits
+reference: Ahumada2020ApJS..249....3A
+public: True
+flux_calibrated: True
+flux_calibration : 1e-17
+
+# Mandatory columns in specz catalog
+ID: SPECOBJID
+RA: PLUG_RA
+DEC: PLUG_DEC
+zspec: Z
+z_flag: ZWARNING
+# column name with 1d spectra filenames
+1dname: fits_filename
+1dpath: /path/to/inspec-z/data/1d
+# 1d file structure
+1dsp_profile: SDSS
+# vacuum or air
+wavelength_type: vacuum
+
+# filter catalog based on coordinates
+coordinate_bounding_box: True
+ra_min: 29.8
+ra_max: 39.6
+dec_min: -7.9
+dec_max: -2.3
+# optional selection based on boolean flag in catalog
+use_boolean: True
+# column name for boolean selection
+selection: 'has_photometry'
+# the output catalog has ID, RA, DEC, Z, zflag, 1dname
+# extra column names to keep in output, always provide as list
+keep_columns: ['has_main', 'has_homogeneous', 'has_hsc_wide', 'has_hsc_dud', 'has_photometry', 'multiplicity']
+
+# Emission lines plot
+emlines_file: /path/to/inspec-z/data/EmLines_air_vac.csv
+emlines_file_type: csv
+# primary, all, none
+emlines_show: primary
+# TODO
+skylines_file:
+skylines_show: True
+slider_zmin: 0
+slider_zmax: 7
+
+# Optional photoz info
+# will be matched during catalog preparation
+zphot_path: /path/to/inspec-z/data/
+zphot_filename: photoz.fits
+zphot_format: fits
+zphot_id: NUMBER
+zphot_ra: RA
+zphot_dec: DEC
+zphot: Z_BEST
+zphot_reference: Fotopoulou2016A&A...592A...5F
+zphot_match:  True
+
+# Catalog preparation outcome, input for inspecz
+inspecz_outpath: /path/to/inspec-z/data/
+inspecz_out_filename: inspecz_XXLN_SDSS-specObj-dr16.fits
+inspecz_out_format: fits
+inspecz_overwrite: True
+
+# Temporary buffer files
+buffer_path: /path/to/inspec-z/data/
+buffer_name: buffer_inspecz_XXLN_SDSS-specObj-dr16.csv
+buffer_format: csv
+
+# Inspection output
+out_path: /path/to/inspec-z/data/
+out_filename: verified_XXLN_SDSS-specObj-dr16.fits
+out_format: fits 
+
+# Final catalog
+final_catalog_path: /path/to/inspec-z/data/
+final_catalog_name: final_XXLN_SDSS-specObj-dr16.fits
+final_catalog_format: fits
+final_report: True
+
+
+# Mandatory 
+# Verification strategy
+# new: starts buffer verification from scratch, overwriting previous output file
+# resume: resume from existing buffer verification file, or start anew if it does not exist
+vstatus: new
+# select only verified sources (True), only not verified (False), any source (any)
+view_verified: True
+# verfication sample, the following selections are combined with a logical AND operator
+# z range: examine sources with vzmin < z < vzmax
+vzmin: 3
+vzmax: 100
+# zphot outliers: only available if zphot is provided 
+# select sources with |zspec-zphot|>0.15*(1+zspec)
+# outlier, inlier, ignore, none
+vzphot_outlier: ignore
+# sample: examine fraction of the selected sample (1 = 1%)
+vsample_percent: 100
+# array of quality flags, leave empty to select all flags
+vquality: [4]
+# set random seed for reproducibility
+vseed : 1234
+
+
+# Spectrum visualization
+# boxcar smoothing
+box_size: 6
+# smoothed spectrum sigma clipping, used only for axis limits. The full spectrum is plotted
+sigma_clip: 7
+# Position padding from top for emission line names
+padding: 0.05
+
+
+
+# zflags mapping to homogeneous system
+# new_flag: current flag(s)
+# The new_flag will be integer value in the output catalog 0 being the lowest quality redshift, and 4 being the highest quality redshift
+
+new_flag_name: flag
+new_broadline_flag_name: flag_broad
+# SDSS or VVDS-style of flagging
+flagging_type: SDSS
+
+# SDSS-like flagging zwarning>0 is bad quality
+# flags outside this range are set to 1, else 4
+flag_lower_limit: -1
+flag_upper_limit: 1
+
+# VVDS-like flagging
+#
+#VVDS-style flagging follows the system: (B)(A)d.x
+# d: the quality of the spectrum (see Scodeggio2018, Garilli2014)
+#    Flag 1.X: tentative redshift measurement, with∼50% chance to be wrong
+#    Flag 2.X: still fairly secure,>95% confidence level.
+#    Flags 4.X and 3.X: highly secure redshift, with confidence>99%.
+#    Flag 9.X: redshift based a single emission feature, usually[OII]3727 Å. With the PDR-1 data we showed that the confidence level of this class is∼90%.
+#The flag in the configuration file corresponds to "d"
+# A=1 denotes the presence of broad lines
+# B=2 or A>1: denotes that the spectrum was seredinitously detected in the slit
+# .x: concordance with photoz; ignored in this mapping
+#Examples:
+# 2.x: single object 
+# 34.x: Third object in slit with very secure redshift.
+# 219.x : Second object in slit, it has a single broad line.
+#
+# Provide single number of comma separated list
+# Quality description quoted from Master et al., 2017 [2017ApJ...841..111M]
+# Q=0: a quality flag of 0 indicates that no redshift could be identified. 
+# TODO: accept array
+0: 0
+# Q=1: a quality flag of 1 indicates a highly uncertain guess.
+1: 1
+# Q=2: a quality flag of 2 indicates a reasonable guess.
+2: 2
+# Q=3: a quality flag of 3 indicates a high-confidenceredshift with a low probability of an incorrect identification.
+3: 3
+# Q=4: a quality flag of 4 indicates an unambiguous redshift identified with multiple features or the presence of the split[OII]3726ll, 3729 doublet.
+4: 4
+# Q=5: a quality flag of 3.5 indicates a high-confidenceredshift based on a single line, with a very remote possibility of an incorrect identification
+5: 9
+
+# if 0_limit==True, all flags below that value are set to 0, otherwise the individual flags are set to 0.
+0_limit : True
+# broad lines according VVDS/VIPERS definition: 1(flag)
+broad_flag: False
+# secondary in slit according VVDS/VIPERS definition: 2(flag)
+secondary_flag: False
+
