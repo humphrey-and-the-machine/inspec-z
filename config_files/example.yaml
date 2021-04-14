@@ -1,7 +1,7 @@
 # Specz caltaog
 # astropy.Table formats: https://docs.astropy.org/en/stable/io/unified.html#built-in-readers-writers
 survey: SDSS DR16
-filename_path: /path/to/inspec-z/data
+filename_path: /path/toinspec-z/data
 filename: specObj-dr16_example.fits
 fileformat: fits
 provenance: https://data.sdss.org/sas/dr16/sdss/spectro/redux/specObj-dr16.fits
@@ -18,7 +18,7 @@ zspec: Z
 z_flag: ZWARNING
 # column name with 1d spectra filenames
 1dname: fits_filename
-1dpath: /path/to/inspec-z/data/1d
+1dpath: /path/toinspec-z/data/1d
 # 1d file structure
 1dsp_profile: SDSS
 # vacuum or air
@@ -31,7 +31,7 @@ ra_max: 39.6
 dec_min: -7.9
 dec_max: -2.3
 # optional selection based on boolean flag in catalog
-use_boolean: True
+use_boolean: False
 # column name for boolean selection
 selection: 'has_photometry'
 # the output catalog has ID, RA, DEC, Z, zflag, 1dname
@@ -39,7 +39,7 @@ selection: 'has_photometry'
 keep_columns: []
 
 # Emission lines plot
-emlines_file: /path/to/inspec-z/data/EmLines_air_vac.csv
+emlines_file: /path/toinspec-z/data/EmLines_air_vac.csv
 emlines_file_type: csv
 # primary, all, none
 emlines_show: primary
@@ -51,7 +51,7 @@ slider_zmax: 7
 
 # Optional photoz info
 # will be matched during catalog preparation
-zphot_path: /path/to/inspec-z/data/
+zphot_path: /path/toinspec-z/data/
 zphot_filename: photoz.fits
 zphot_format: fits
 zphot_id: NUMBER
@@ -62,23 +62,23 @@ zphot_reference: Fotopoulou2016A&A...592A...5F
 zphot_match:  True
 
 # Catalog preparation outcome, input for inspecz
-inspecz_outpath: /path/to/inspec-z/data/
+inspecz_outpath: /path/toinspec-z/data/
 inspecz_out_filename: inspecz_XXLN_SDSS-specObj-dr16.fits
 inspecz_out_format: fits
 inspecz_overwrite: True
 
 # Temporary buffer files
-buffer_path: /path/to/inspec-z/data/
+buffer_path: /path/toinspec-z/data/
 buffer_name: buffer_inspecz_XXLN_SDSS-specObj-dr16.csv
 buffer_format: csv
 
 # Inspection output
-out_path: /path/to/inspec-z/data/
+out_path: /path/toinspec-z/data/
 out_filename: verified_XXLN_SDSS-specObj-dr16.fits
 out_format: fits 
 
 # Final catalog
-final_catalog_path: /path/to/inspec-z/data/
+final_catalog_path: /path/toinspec-z/data/
 final_catalog_name: final_XXLN_SDSS-specObj-dr16.fits
 final_catalog_format: fits
 final_report: True
@@ -90,11 +90,11 @@ final_report: True
 # resume: resume from existing buffer verification file, or start anew if it does not exist
 vstatus: new
 # select only verified sources (True), only not verified (False), any source (any)
-view_verified: True
+view_verified: any
 # verfication sample, the following selections are combined with a logical AND operator
 # z range: examine sources with vzmin < z < vzmax
-vzmin: 3
-vzmax: 100
+vzmin: 0
+vzmax: 10
 # zphot outliers: only available if zphot is provided 
 # select sources with |zspec-zphot|>0.15*(1+zspec)
 # outlier, inlier, ignore, none
