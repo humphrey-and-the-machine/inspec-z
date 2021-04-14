@@ -11,7 +11,7 @@ Inspec-z requires: `python`, `pyyaml`, `numpy`, `astropy`, and `matplotlib`.
 A conda environment is recommended:
 ```
 cd inspec-z
-conda create --name inspec-1z
+conda create --name inspec-z
 conda activate inspec-z
 ```
 
