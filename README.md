@@ -4,21 +4,19 @@ Interactive inspection and validation of 1D spectra.
 # Environment installation
 Clone package locally:
 
-`git clone git@github.com:d-i-an-a/inspec-z.git`
+```git clone git@github.com:d-i-an-a/inspec-z.git
+cd inspec-z
+```
 
 Inspec-z requires: `python`, `pyyaml`, `numpy`, `astropy`, and `matplotlib`.
 
-A conda environment is recommended:
+A conda environment is recommended. Either install the latest version of the required packages:
+
 ```
-cd inspec-z
 conda create --name inspec-z
 conda activate inspec-z
+conda install python pyyaml numpy astropy matplotlib
 ```
-
-Either install the latest version of the required packages:
-
-`conda install python pyyaml numpy astropy matplotlib`
-
 or install the lastest tested version:
 
 `conda create --name  inspec-z --file requirements.txt`
