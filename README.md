@@ -15,7 +15,7 @@ A conda environment is recommended. Either install the latest version of the req
 ```
 conda create --name inspec-z
 conda activate inspec-z
-conda install python pyyaml numpy astropy matplotlib
+conda install python pyyaml numpy astropy matplotlib tqdm scipy
 ```
 or install the lastest tested version:
 
