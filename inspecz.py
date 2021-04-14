@@ -62,7 +62,7 @@ if __name__ == '__main__':
     try:
         yaml_file = open(sys.argv[1], 'r')
     except:
-        yaml_file = open("config_files/sdss_dr16.yaml", 'r')
+        yaml_file = open("config_files/example.yaml", 'r')
     
     config = yaml.load(yaml_file, Loader=yaml.FullLoader)
 

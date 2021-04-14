@@ -36,7 +36,7 @@ use_boolean: True
 selection: 'has_photometry'
 # the output catalog has ID, RA, DEC, Z, zflag, 1dname
 # extra column names to keep in output, always provide as list
-keep_columns: ['has_main', 'has_homogeneous', 'has_hsc_wide', 'has_hsc_dud', 'has_photometry', 'multiplicity']
+keep_columns: []
 
 # Emission lines plot
 emlines_file: /path/to/inspec-z/data/EmLines_air_vac.csv

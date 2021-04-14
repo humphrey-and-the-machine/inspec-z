@@ -244,7 +244,7 @@ if __name__ == '__main__':
     plt.rcParams['figure.autolayout'] = False
 
     # configuration
-    yaml_file = open("config_files/sdss_dr16.yaml", 'r')
+    yaml_file = open("config_files/example.yaml", 'r')
     config = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
     fcat = get_catalog(config)
