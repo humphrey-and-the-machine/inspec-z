@@ -25,7 +25,7 @@ or install the lastest tested version:
 An example configuration and data files are provided.
 
 1. Edit or create the `yaml` configuration file in `config_files` folder.
-- Set up the file paths and file names.
+- Set up the file paths and file names. To follow the example replace `/path/to/` with the path to the folder containing the `inspec-z` code.
 - Change the selection of the sample to be inspected.
 
 2. Prepare catalog: `python prepare_catalog.py`.
