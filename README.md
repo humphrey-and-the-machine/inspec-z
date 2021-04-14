@@ -15,7 +15,7 @@ A conda environment is recommended. Either install the latest version of the req
 ```
 conda create --name inspec-z
 conda activate inspec-z
-conda install python pyyaml numpy astropy matplotlib
+conda install python pyyaml numpy astropy matplotlib tqdm scipy
 ```
 or install the lastest tested version:
 
@@ -28,8 +28,8 @@ An example configuration and data files are provided.
 - Set up the file paths and file names. To follow the example replace `/path/to/` with the path to the folder containing the `inspec-z` code.
 - Change the selection of the sample to be inspected.
 
-2. Prepare catalog: `python prepare_catalog.py`.
-3. Run main program: `python inspecz.py`.
-4. Merge results with initial data file and get report: `python finalize.py`.
+2. Prepare catalog: `python prepare_catalog.py config_files/example.yaml`
+3. Run main program: `python inspecz.py config_files/example.yaml`
+4. Merge results with initial data file and get report: `python finalize.py config_files/example.yaml`
 
 
