@@ -8,14 +8,14 @@ Clone package locally:
 cd inspec-z
 ```
 
-Inspec-z requires: `python`, `pyyaml`, `numpy`, `astropy`, `scipy`, `tqdm` and `matplotlib`.
+Inspec-z requires: `python`, `pyyaml`, `numpy`, `astropy`, `scipy`, and `matplotlib`.
 
 A conda environment is recommended. Either install the latest version of the required packages:
 
 ```
 conda create --name inspec-z
 conda activate inspec-z
-conda install python pyyaml numpy astropy matplotlib tqdm scipy
+conda install python pyyaml numpy astropy matplotlib scipy
 ```
 or install the lastest tested version:
 

@@ -14,7 +14,6 @@ from astropy import units as u
 from astropy.table import Table, join, join_skycoord, hstack
 import matplotlib.pyplot as plt
 import catalog_io as io
-import tqdm
 
 def replace_value(catalog, column, old_value, new_value):
     assert config['flagging_type'].lower() == 'vvds'
