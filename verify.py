@@ -14,7 +14,7 @@ class Verify(Spectrum):
         Spectrum.__init__(self)
 
         # Plotting parameters        
-        plt.rcParams['backend'] = 'TkAgg'
+        plt.rcParams['backend'] = 'Qt5kAgg'
         plt.rcParams['figure.autolayout'] = False
         # spectrum smooth factor
         self.box_size = config['box_size']
