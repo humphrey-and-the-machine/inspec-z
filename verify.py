@@ -7,13 +7,14 @@ import yaml
 class Verify(Spectrum):
  
     def __init__(self, fcat, config):
-        import matplotlib as plt
+        import matplotlib
         import numpy as np
 
         Spectrum.__init__(self)
 
         # Plotting parameters        
-        plt.rcParams['figure.autolayout'] = False
+        matplotlib.rcParams['backend'] = 'TkAgg'
+        matplotlib.rcParams['figure.autolayout'] = False
         # spectrum smooth factor
         self.box_size = config['box_size']
         # padding around 1d spec plot
