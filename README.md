@@ -5,7 +5,7 @@ Interactive inspection and validation of 1D spectra.
 Clone package locally or download the zip file:
 
 ```
-git clone git@github.com:d-i-an-a/inspec-z.git
+git clone https://github.com/d-i-an-a/inspec-z.git
 cd inspec-z
 ```
 
