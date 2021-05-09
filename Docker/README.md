@@ -1,8 +1,7 @@
 Table of content
 - [How to run this image on Mac OS X - Quick start](#-how-to-run-this-image-on-mac-os-x---quick-start)
 - [How to run this image on Mac OS X - Long version](#-how-to-run-this-image-on-mac-os-x---long-version)
-- [How to load your data to the image
-](#-how-to-load-your-data-to-the-image)
+- [How to load your data to the image](#-how-to-load-your-data-to-the-image)
 
 # How to run this image on Mac OS X - Quick start
 
