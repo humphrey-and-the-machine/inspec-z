@@ -1,9 +1,8 @@
-FROM python:3.9-alpine3.12
-# FROM python:3.9-buster
+FROM python:3.9-buster
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY pipRequirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
 
