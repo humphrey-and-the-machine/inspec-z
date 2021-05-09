@@ -1,7 +1,14 @@
-# inspec-z
+# Inspec-z
 Interactive inspection and validation of 1D spectra.
+- [Docker support](#Docker)
+- [Conda Installation](#Conda-Installation)
+- [Run sequence](#Run-sequence)
 
-# Environment installation
+
+# Docker 
+Docker instructions for Mac OS X can be found [here](Docker/README.md).
+
+# Conda installation
 Clone package locally or download the zip file:
 
 ```
