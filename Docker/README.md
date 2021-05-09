@@ -44,7 +44,7 @@ docker run \
     -v $(pwd)/config_files/dockerConfig.yaml:/mnt/config.yaml \
     -v $(pwd)/data:/app/data \
     -e DISPLAY=$(ifconfig en0 | grep "inet " | awk '{print $2}'):0 \
-    douchy/inspec-z:1.0.0
+    astrointensivedata/inspec-z:lastest
 ```
 
 # How to run this image on Mac OS X - Long version
