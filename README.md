@@ -11,7 +11,7 @@ Docker instructions for Mac OS X can be found [here](Docker/README.md).
 # Conda installation
 Clone package locally or download the zip file:
 
-```
+```bash
 git clone https://github.com/d-i-an-a/inspec-z.git
 cd inspec-z
 ```
@@ -20,7 +20,7 @@ Inspec-z requires: `python`, `pyyaml`, `numpy`, `astropy`, `scipy`, and `matplot
 
 A conda environment is recommended. Either install the latest version of the required packages:
 
-```
+```bash
 conda create --name inspec-z
 conda activate inspec-z
 conda install python pyyaml numpy astropy matplotlib scipy
