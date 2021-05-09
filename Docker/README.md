@@ -121,8 +121,7 @@ docker run \
 
 # How to load your data to the image
 
-Data loaded in the container is controlled via the second `-v` option visible in [Run the container
-](##-run-the-container).
+Data loaded in the container is controlled via the second `-v` option visible in [Run the container](##-run-the-container).
 
 To use your own data, update the value of the left hand side of `':'`.
 
