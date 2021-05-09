@@ -24,8 +24,18 @@ Official website: https://www.xquartz.org/
 2. Open the `Preferences...` menu
 3. Go to the Security tab and check the box `Allow connections from network clients`
 
-## Run the container
+## Clone the GitHub repository
+```bash
+git clone https://github.com/d-i-an-a/inspec-z.git
+```
 
+## Run the container
+The following commands need to be run at the root of the cloned repository:
+```bash
+cd inspec-z
+```
+
+Run the docker image:
 ```bash
 open -a xquartz
 /opt/X11/bin/xhost +
