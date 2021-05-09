@@ -2,7 +2,8 @@ FROM python:3.9-buster
 
 WORKDIR /app
 
-COPY pipRequirements.txt requirements.txt
+COPY Docker/pipRequirements.txt requirements.txt
+COPY Docker/dockerInspecz.py inspecz.py
 
 RUN pip3 install -r requirements.txt
 
