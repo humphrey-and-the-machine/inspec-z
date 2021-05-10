@@ -74,7 +74,11 @@ class Verify(Spectrum):
             self.inspecz_id = self.fcat['inspecz_id'][self.idx]
             self.z = self.fcat[self.config['zspec']][self.idx]
             self.z_temp = self.z
-            self.zphot = self.fcat[self.config['zphot']+'_zphot'][self.idx]
+            try:
+                self.zphot = self.fcat[self.config['zphot']+'_zphot'][self.idx]
+            except:
+                self.zphot = -99
+
             self.flag = int(self.fcat[self.config['new_flag_name']][self.idx])
             self.flag_temp = self.flag
             self.verified = int(self.fcat['verified'][self.idx])
@@ -109,7 +113,10 @@ class Verify(Spectrum):
         self.inspecz_id = self.buffer['inspecz_id'][self.idx]
         self.z = self.buffer['z'][current_idx]
         self.z_temp = self.buffer['z_temp'][current_idx]
-        self.zphot = self.buffer['z_phot'][current_idx]
+        try:
+            self.zphot = self.buffer['z_phot'][current_idx]
+        except:
+            self.zphot = -99
         self.flag = self.buffer['flag'][current_idx]
         self.flag_temp = self.buffer['flag_temp'][current_idx]
         self.verified = int(self.buffer['verified'][current_idx])
@@ -263,7 +270,10 @@ class Verify(Spectrum):
             self.inspecz_id = self.fcat['inspecz_id'][self.idx]
             self.z = self.fcat[self.config['zspec']][self.idx]
             self.z_temp = self.z
-            self.zphot = self.fcat[self.config['zphot']+'_zphot'][self.idx]
+            try:
+                self.zphot = self.fcat[self.config['zphot']+'_zphot'][self.idx]
+            except:
+                self.zphot = -99
             self.flag = int(self.fcat[self.config['new_flag_name']][self.idx])
             self.flag_temp = self.flag
             self.verified = int(self.fcat['verified'][self.idx])
