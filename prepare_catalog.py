@@ -139,15 +139,19 @@ def prep_catalog(config):
     # add column boolean for existing 1d spectra in specified location
     print('Searching for 1d ... ', end='')
 
+    # check for NULL values in 1d filename, verify file exists
+    z_exists = []
+    for filename1d in zspec_cat[config['1dname']]:
+        is_name_null = False
+        try:
+            filename1d.isspace()
+        except:
+            is_name_null = True
+        
+        z_exists.append( (not is_name_null) and os.path.exists( os.path.join(config['1dpath'], filename1d.strip())) )
+        
+    zspec_cat['exists_1d'] = z_exists  
 
-    zspec_cat['exists_1d'] = [ (not filename1d.isspace()) and os.path.exists( os.path.join(config['1dpath'], filename1d.strip())) for filename1d in zspec_cat[config['1dname']]]
-    """
-    for item in zspec_cat[config['1dname']]:
-        print(item,)
-        print(len(item),)
-        print(item.isspace())
-        input()
-    """
     print('done.')
     
     if config['zphot_match'] == True:
