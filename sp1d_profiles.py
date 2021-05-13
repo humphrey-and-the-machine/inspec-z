@@ -21,14 +21,26 @@ def read_sdss_1d(file):
             Object = ""
         #
         # Reconstruct spectrum
+        try:
+            # sdss format
+            data = f[1].data
+            wave = np.power(10.0, data.field('loglam'))
+            flux = data.field('flux') 
+            # TODO
+            error = []
+            # TODO
+            mask = []
+        except:
+            # apogee format
+            Npixels = f[1].header['NAXIS1']
+            wave_min = f[1].header['CRVAL1']
+            wave_step = f[1].header['CDELT1']
+            wave = 10. ** np.arange(wave_min, wave_min + Npixels * wave_step, wave_step)
 
-        data = f[1].data
-        wave = np.power(10.0, data.field('loglam'))
-        flux = data.field('flux') 
-    # TODO
-    error = []
-    # TODO
-    mask = []
+            flux = f[1].data[0]
+            error = f[2].data[0]
+            mask = f[3].data[0]
+
     return wave, flux, error, mask
 
 def read_cesame_1d(file):
@@ -42,7 +54,6 @@ def read_cesame_1d(file):
         wave_step = f[0].header['CDELT1']
         #wave = np.arange(wave_min, wave_min+wave_step*Npixels, wave_step)
         wave = ((np.arange(Npixels) + 1.0) - f[0].header['CRPIX1'])*f[0].header['CDELT1'] + f[0].header['CRVAL1']
-
         #
         if f[0].header['NAXIS']==1:
             flux = f[0].data
@@ -111,3 +122,18 @@ def read_VVDS_1d(file):
         mask = []
 
     return wave, flux, error, mask
+    
+def read_zCOSMOS_1d(file):    
+    from astropy.io import fits
+    import numpy as np
+    #
+    with fits.open(file, memmap=False ) as f:
+        wave = f[1].data[0][0]
+        flux = f[1].data[0][1]
+        # TODO
+        error = f[1].data[0][2]
+        # TODO
+        mask = []
+
+    return wave, flux, error, mask
+    

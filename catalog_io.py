@@ -181,7 +181,9 @@ def read_1d(file, style):
     elif style.lower() == 'gama':
         wave, flux, mask, error = sp1d.read_GAMA_1d(file)
     elif style.lower() == 'vvds':
-        wave, flux, mask, error = sp1d.read_VVDS_1d(file)        
+        wave, flux, mask, error = sp1d.read_VVDS_1d(file)      
+    elif style.lower() == 'zcosmos':
+        wave, flux, mask, error = sp1d.read_zCOSMOS_1d(file)     
     else:
         raise NotImplementedError(f'Profile {style} not implemented. Please add handler in catalog_io.')    
     return wave, flux, mask, error
