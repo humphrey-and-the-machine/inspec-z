@@ -12,9 +12,7 @@ class Verify(Spectrum):
 
         Spectrum.__init__(self)
 
-        # Plotting parameters        
-        matplotlib.rcParams['backend'] = 'TkAgg'
-        matplotlib.rcParams['figure.autolayout'] = False
+
         # spectrum smooth factor
         self.box_size = config['box_size']
         # padding around 1d spec plot
@@ -339,6 +337,10 @@ class Verify(Spectrum):
         from astropy.convolution import convolve, Box1DKernel
         from astropy.stats import sigma_clip
 
+        # Plotting parameters        
+        matplotlib.rcParams['backend'] = 'TkAgg'
+        matplotlib.rcParams['figure.autolayout'] = False
+        
         fig = plt.figure(figsize=(12,6), constrained_layout=False)
 
         fig.subplots_adjust(left=0.065, bottom=0.2, top=0.95, right=0.98)
