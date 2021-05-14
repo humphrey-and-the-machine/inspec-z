@@ -7,7 +7,7 @@ import yaml
 class Verify(Spectrum):
  
     def __init__(self, fcat, config):
-        import matplotlib
+
         import numpy as np
 
         Spectrum.__init__(self)
@@ -329,6 +329,7 @@ class Verify(Spectrum):
         """
         
         import numpy as np
+        import matplotlib
         import matplotlib.pyplot as plt
         from emission_lines import plot_lines
         from matplotlib.widgets import RadioButtons, CheckButtons, Slider, Button
