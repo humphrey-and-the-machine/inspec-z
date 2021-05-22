@@ -18,10 +18,10 @@ cd inspec-z
 
 Inspec-z requires: `python`, `pyyaml`, `numpy`, `astropy`, `scipy`, and `matplotlib`.
 
-A conda environment is recommended. Either install the latest version of the required packages:
+A conda environment is recommended, with Python 3.7.10 or higher. Either install the latest version of the required packages:
 
 ```bash
-conda create --name inspec-z
+conda create --name inspec-z 'python>=3'
 conda activate inspec-z
 conda install python pyyaml numpy astropy matplotlib scipy
 ```
