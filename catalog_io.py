@@ -220,7 +220,7 @@ def save_file(fcat, file_, key_dict, column_selection, outfilename, outformat='f
 
     for key in key_dict.keys():
         if key not in fcat.colnames:
-            fcat[key] = [-99]*len(fcat)
+            fcat[key] = [-99.]*len(fcat)
 
     for file_row in file_:
         if file_row[column_selection]==1:
