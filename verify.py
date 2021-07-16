@@ -177,7 +177,7 @@ class Verify(Spectrum):
         for l in self.spec1d_smoothed:
             l.set_xdata(self.wave)
             l.set_ydata(self.smoothed_flux)
-        
+       
         if update_axes == True:
             self.ax.set_xlim([np.min(self.sp1d_wave), np.max(self.sp1d_wave)])
 
@@ -192,6 +192,20 @@ class Verify(Spectrum):
         self.ax.set_title(self.id_)
 
         self._update_text()
+        
+        # Update legend
+        # get old labels
+        handles, labels = self.ax.get_legend_handles_labels()
+        # update smoothing parameter
+        new_labels = []
+        for label in labels:
+            if 'box_size' in label:
+                label = f'box_size {self.sm_temp}'
+            new_labels.append(label)
+        # Draw new legend
+        self.ax.legend(handles,new_labels, loc=3)
+
+        # Update plot
         plt.draw()
         
 
@@ -363,7 +377,7 @@ class Verify(Spectrum):
         kernel = Box1DKernel(self.box_size)
         self.smoothed_flux = convolve(self.sp1d_flux, kernel)
         self.spec1d_smoothed = self.ax.plot(self.sp1d_wave, self.smoothed_flux, '', 
-                                        color='k', alpha=1, label=f'box_size {self.box_size}')
+                                        color='k', alpha=1, label=f'box_size {self.sm_temp}')
         self.flux_5s_clipped = sigma_clip(self.smoothed_flux, sigma=self.config['sigma_clip'])
 
         # Mask
